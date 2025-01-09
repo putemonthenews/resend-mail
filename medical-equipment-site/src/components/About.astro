@@ -1,0 +1,80 @@
+---
+import { about } from '../images.json'
+---
+
+<section class="about" id="about">
+  <div class="about-container">
+    <h2>О Нас</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Мы являемся ведущим поставщиком медицинского оборудования с более чем 15-летним опытом работы на рынке.</p>
+        <ul>
+          <li>✓ Прямые поставки от производителей</li>
+          <li>✓ Гарантийное обслуживание</li>
+          <li>✓ Сертифицированное оборудование</li>
+          <li>✓ Техническая поддержка 24/7</li>
+        </ul>
+      </div>
+      <div class="about-image">
+        <img src={about} alt="Медицинское оборудование" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 4rem 2rem;
+    background: #ffffff;
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .about-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+  }
+
+  .about-text li {
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .about-image img {
+    /* max-width: 500px; */
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* img {
+      width: 100%;
+    } */
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 

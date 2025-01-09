@@ -1,0 +1,242 @@
+---
+const menuItems = [
+  { title: "Главная", href: "#" },
+  { title: "О нас", href: "#about" },
+  { title: "Оборудование", href: "#equipment" },
+  { title: "Отзывы", href: "#reviews" },
+  { title: "Контакты", href: "#contact" }
+];
+---
+
+<header class="header" itemscope itemtype="https://schema.org/Organization">
+  <div class="header-container">
+    <div class="logo" itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+      <img itemprop="logo" src="/favicon-96x96.png" alt="Логотип" />
+      <span itemprop="name">WrechMed</span>
+    </div>
+    
+    <button class="burger-menu" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="mobile-menu">
+      <nav class="nav-menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul>
+          {menuItems.map(item => (
+            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage">
+              <a href={item.href} itemprop="url">
+                <span itemprop="name">{item.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="contact-info" itemscope itemtype="https://schema.org/ContactPoint">
+        <a href="tel:89518008027" class="phone" itemprop="telephone">8 951 800-80-27</a>
+        <button class="callback-btn" itemprop="contactType">Заказать звонок</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .header.menu-open {
+    background: white;
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    z-index: 1001;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .mobile-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+  }
+
+  .burger-menu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--accent);
+    transition: all 0.3s ease;
+  }
+
+  .burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .burger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .nav-menu ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-menu a:hover {
+    color: var(--accent);
+  }
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .phone {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .callback-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .callback-btn:hover {
+    background: var(--accent-light);
+  }
+
+  @media (max-width: 968px) {
+    .burger-menu {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      padding: 80px 2rem 2rem;
+      gap: 0;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      z-index: 1000;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-menu ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-menu a {
+      font-size: 1.2rem;
+    }
+
+    .contact-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      flex-direction: column-reverse;
+    }
+
+    .callback-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  
+</style> 
+
+<script>
+  const burgerMenu = document.querySelector('.burger-menu');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const header = document.querySelector('.header');
+
+  burgerMenu?.addEventListener('click', () => {
+    burgerMenu.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+    header?.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking on links
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      burgerMenu?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      header?.classList.remove('menu-open');
+    });
+  });
+</script>

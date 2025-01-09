@@ -1,0 +1,166 @@
+---
+import { hero } from '../images.json';
+---
+
+<section class="hero" style=`background-image: url(${hero})`>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>Современное Медицинское Оборудование</h1>
+      <p class="hero-desc">Инновационные решения для вашей клиники</p>
+      <button class="cta-button">Получить консультацию</button>
+    </div>
+    <div class="hero-form">
+      <div class="form-container">
+        <h3>Получить консультацию</h3>
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Ваше имя" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Ваш телефон" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Ваш email" required />
+          </div>
+          <button type="submit" class="submit-button">Отправить заявку</button>
+        </form>
+        <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-image-source: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border-image-slice: fill 1;
+    /* border-style: solid;
+    border-image-width: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    padding-right: 2rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--accent-light);
+  }
+
+  .hero-form {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container h3 {
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .submit-button:hover {
+    background: var(--accent-light);
+  }
+
+  .form-note {
+    color: #666;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 968px) {
+    .hero-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-content {
+      text-align: center;
+      padding-right: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-form {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+</style> 

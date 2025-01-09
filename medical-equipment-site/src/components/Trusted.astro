@@ -1,0 +1,65 @@
+---
+const partners = [
+  {
+    name: "Клиника №1",
+    logo: "https://ci74.ru/wp-content/uploads/2019/11/3779_Thumb.jpeg"
+  },
+  {
+    name: "Медицинский Центр",
+    logo: "https://avatars.mds.yandex.net/get-altay/10878016/2a0000018a66713dfacae1e2c1842e6022bb/L_height"
+  },
+  {
+    name: "Городская Больница",
+    logo: "https://prodoctorov.ru/media/photo/moskva/lpuimage/21021/47822-bolnica-_52-na-oktyabrskom-pole-gkb-52_l.jpg"
+  }
+];
+---
+
+<section class="trusted" id="trusted">
+  <h2>Нам Доверяют</h2>
+  <div class="partners-grid">
+    {partners.map(partner => (
+      <div class="partner-card">
+        <img src={partner.logo} alt={partner.name} />
+        <p>{partner.name}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .trusted {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    @media(max-width: 992px) {
+      font-size: 2rem;
+    }
+    @media(max-width: 767px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .partner-card {
+    text-align: center;
+  }
+
+  .partner-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+</style> 

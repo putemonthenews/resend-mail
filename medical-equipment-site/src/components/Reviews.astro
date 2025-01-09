@@ -1,0 +1,100 @@
+---
+const reviews = [
+  {
+    name: "Елена Петрова",
+    position: "Главврач, Клиника 'Здоровье'",
+    text: "Отличное оборудование и превосходный сервис. Очень довольны сотрудничеством.",
+    rating: 5
+  },
+  {
+    name: "Александр Иванов",
+    position: "Директор медицинского центра",
+    text: "Профессиональный подход и качественное оборудование. Рекомендую!",
+    rating: 5
+  },
+  {
+    name: "Мария Сидорова",
+    position: "Заведующая отделением диагностики",
+    text: "Надежные поставщики с отличной технической поддержкой.",
+    rating: 5
+  }
+];
+---
+
+<section class="reviews" id="reviews" itemscope itemtype="https://schema.org/Organization">
+  <h2>Отзывы Клиентов</h2>
+  <div class="reviews-grid">
+    {reviews.map(review => (
+      <div class="review-card" itemscope itemtype="https://schema.org/Review">
+        <div class="stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content={review.rating.toString()} />
+          <meta itemprop="bestRating" content="5" />
+          {"★".repeat(review.rating)}
+        </div>
+        <p class="review-text" itemprop="reviewBody">"{review.text}"</p>
+        <div class="reviewer" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <strong itemprop="name">{review.name}</strong>
+          <span itemprop="jobTitle">{review.position}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .reviews {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+
+    @media(max-width: 992px) {
+      font-size: 2rem;
+    }
+    @media(max-width: 767px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .stars {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .reviewer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .reviewer span {
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style> 

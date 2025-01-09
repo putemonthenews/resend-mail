@@ -1,0 +1,86 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" itemscope itemtype="https://schema.org/Organization">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Контакты</h3>
+      <p itemprop="telephone">Телефон: <a href="tel:89518008027">8 951 800-80-27</a></p>
+      <p itemprop="email">Email: <a href="mailto:ninomedical@mail.ru">ninomedical@mail.ru</a></p>
+      <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <span itemprop="addressLocality">г. Красногорск</span>,
+        <span itemprop="streetAddress">ул. Ильинское шоссе, 1А</span>
+      </p>
+    </div>
+    <div class="footer-section">
+      <h3>Навигация</h3>
+      <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#equipment">Оборудование</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Мы в соцсетях</h3>
+      <div class="social-links">
+        <a href="https://vk.com/ninomedtech" aria-label="VKontakte">VK</a>
+        <a href="https://t.me/ninomedical" aria-label="Telegram">TG</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} <span itemprop="name">WrechMed</span>. Все права защищены.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--accent-dark);
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-section h3 {
+    margin-bottom: 1rem;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer-section a:hover {
+    text-decoration: underline;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+</style> 

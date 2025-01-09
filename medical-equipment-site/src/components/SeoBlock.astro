@@ -1,0 +1,77 @@
+---
+const keywords = [
+  "медицинское оборудование",
+  "МРТ сканеры",
+  "УЗИ аппараты",
+  "рентген оборудование",
+  "диагностическое оборудование",
+  "медицинская техника",
+  "поставка медоборудования",
+  "сервисное обслуживание",
+  "медицинские технологии"
+];
+---
+
+<section class="seo-block">
+  <div class="seo-content">
+    <h2>Профессиональное Медицинское Оборудование</h2>
+    <div class="keywords">
+      {keywords.map(keyword => (
+        <span class="keyword">{keyword}</span>
+      ))}
+    </div>
+    <div class="seo-text">
+      <p>
+        Наша компания специализируется на поставке высококачественного медицинского оборудования от ведущих мировых производителей. 
+        Мы предлагаем широкий спектр диагностического и лечебного оборудования для медицинских учреждений любого профиля.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seo-block {
+    padding: 4rem 2rem;
+    background: #ffffff;
+  }
+
+  .seo-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    @media(max-width: 992px) {
+      font-size: 2rem;
+    }
+    @media(max-width: 767px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .keyword {
+    background: var(--accent-light);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  .seo-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+</style> 

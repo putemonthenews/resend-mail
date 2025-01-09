@@ -1,0 +1,160 @@
+---
+const faqItems = [
+  {
+    question: "Как осуществляется доставка оборудования?",
+    answer: "Мы осуществляем доставку по всей России. Сроки и стоимость зависят от региона и типа оборудования. Доставка включает разгрузку и базовую установку оборудования."
+  },
+  {
+    question: "Предоставляете ли вы гарантию?",
+    answer: "Да, на все оборудование предоставляется гарантия от 1 до 3 лет. Также доступно постгарантийное обслуживание и техническая поддержка 24/7."
+  },
+  {
+    question: "Возможна ли оплата в рассрочку?",
+    answer: "Да, мы предлагаем различные варианты оплаты, включая рассрочку и лизинг. Условия обсуждаются индивидуально с каждым клиентом."
+  },
+  {
+    question: "Проводите ли вы обучение персонала?",
+    answer: "Да, мы проводим полное обучение персонала работе с поставляемым оборудованием. Обучение входит в стоимость поставки."
+  },
+  {
+    question: "Есть ли у вас сертификаты на оборудование?",
+    answer: "Все поставляемое оборудование имеет необходимые сертификаты и регистрационные удостоверения, соответствующие требованиям РФ."
+  }
+];
+---
+
+<section class="faq" id="faq" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="faq-container">
+    <h2>Часто задаваемые вопросы</h2>
+    <div class="faq-grid">
+      {faqItems.map((item, index) => (
+        <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${index}`}>
+            <span itemprop="name">{item.question}</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" id={`faq-answer-${index}`} itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other FAQs
+      faqQuestions.forEach(q => {
+        if (q !== question) {
+          q.setAttribute('aria-expanded', 'false');
+          const icon = q.querySelector('.icon');
+          if (icon) icon.textContent = '+';
+        }
+      });
+
+      // Toggle current FAQ
+      question.setAttribute('aria-expanded', (!isExpanded).toString());
+      const icon = question.querySelector('.icon');
+      if (icon) icon.textContent = isExpanded ? '+' : '−';
+    });
+  });
+</script>
+
+<style>
+  .faq {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  .faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background-color: #f0f0f0;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    padding: 0 1.5rem 1.5rem;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .faq-question[aria-expanded="true"] + .faq-answer {
+    max-height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    .faq {
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-question {
+      padding: 1.2rem;
+      font-size: 1rem;
+    }
+  }
+</style> 

@@ -1,0 +1,88 @@
+---
+const advantages = [
+  {
+    icon: "🏥",
+    title: "Сертифицированное оборудование",
+    description: "Вся техника имеет необходимые сертификаты и разрешения"
+  },
+  {
+    icon: "🛠️",
+    title: "Сервисное обслуживание",
+    description: "Гарантийное и постгарантийное обслуживание 24/7"
+  },
+  {
+    icon: "📦",
+    title: "Быстрая доставка",
+    description: "Доставка и установка в кратчайшие сроки"
+  },
+  {
+    icon: "💰",
+    title: "Выгодные условия",
+    description: "Гибкая система оплаты и специальные предложения"
+  }
+];
+---
+
+<section class="advantages">
+  <div class="advantages-container">
+    <div class="advantages-grid">
+      {advantages.map(item => (
+        <div class="advantage-card">
+          <div class="advantage-icon">{item.icon}</div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .advantages {
+    padding: 4rem 2rem;
+    background: white;
+    /* margin-top: -4rem; */
+    position: relative;
+    z-index: 2;
+  }
+
+  .advantages-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .advantage-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .advantage-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .advantage-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .advantage-card h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .advantage-card p {
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+</style> 
